@@ -8,6 +8,8 @@ namespace SimpleReminderApplication
     {
         // The TaskItem is now the single source of truth
         private TaskItem _task;
+        private TaskRepository _taskRepository;
+        private Action _refreshListCallback;
 
         /// <summary>
         /// Gets or sets the data object for this control.
@@ -30,9 +32,11 @@ namespace SimpleReminderApplication
         }
 
         // New constructor to initialize the control with a TaskItem
-        internal TodoItemControl(TaskItem task) : this()
+        internal TodoItemControl(TaskItem task, TaskRepository repository, Action refreshList) : this()
         {
             this.Task = task;
+            this._taskRepository = repository;
+            this._refreshListCallback = refreshList;
         }
 
         /// <summary>
@@ -57,14 +61,16 @@ namespace SimpleReminderApplication
             else
             {
                 // IMPORTANT: Always reset to default if the condition isn't met
-                this.BackColor = SystemColors.Control;
-                this.ForeColor = SystemColors.ControlText;
+                this.BackColor = Color.White;
+                this.ForeColor = Color.Black;
             }
 
             // Update styling based on status (e.g., strikeout for completed)
             if (_task.Status == TaskStatus.Completed)
             {
                 lblDescription.Font = new Font(lblDescription.Font, FontStyle.Strikeout);
+                this.BackColor = Color.White;
+                this.ForeColor = Color.Black;
             }
             else
             {
@@ -138,39 +144,83 @@ namespace SimpleReminderApplication
         // From your TodoItemControl.cs
         private void EditTask(object sender, EventArgs e)
         {
-            // This 'using' block calls the exact form you just posted
             using (AddTaskForm editForm = new AddTaskForm(Description, DueDate))
             {
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
-                    Description = editForm.TaskDescription;
-                    DueDate = editForm.TaskDueDate;
+                    // 1. Update the local task object's properties
+                    _task.Description = editForm.TaskDescription;
+                    _task.DueDate = editForm.TaskDueDate;
+
+                    try
+                    {
+                        // 2. Save the updated task to the database
+                        _taskRepository.UpdateTask(this.Task);
+
+                        // 3. CALL THE MAIN REFRESH CALLBACK
+                        // This tells MainWindow to call LoadAllTasks()
+                        _refreshListCallback?.Invoke();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to update task: {ex.Message}");
+                    }
                 }
             }
         }
 
         private void DeleteTask(object sender, EventArgs e)
         {
-            // This will remove the UI control.
-            // Note: You'll still need to delete the TaskItem from your main list/database.
+            _taskRepository.DeleteTask(this.Task.Id);
+            // 3. Remove the UI control from the panel
             this.Parent.Controls.Remove(this);
             this.Dispose(); // Clean up resources
         }
 
+
+        // ... (EditTask and DeleteTask) ...
+
         // New handlers for status changes
         private void MoveToToDo(object sender, EventArgs e)
         {
-            this.Status = TaskStatus.ToDo;
+            _task.Status = TaskStatus.ToDo; // Update the task object
+            try
+            {
+                _taskRepository.UpdateTask(_task); // Save change to database
+                _refreshListCallback?.Invoke();    // Refresh the main UI
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to move task: {ex.Message}");
+            }
         }
 
         private void MoveToInProgress(object sender, EventArgs e)
         {
-            this.Status = TaskStatus.InProgress;
+            _task.Status = TaskStatus.InProgress; // Update the task object
+            try
+            {
+                _taskRepository.UpdateTask(_task); // Save change to database
+                _refreshListCallback?.Invoke();    // Refresh the main UI
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to move task: {ex.Message}");
+            }
         }
 
         private void MoveToCompleted(object sender, EventArgs e)
         {
-            this.Status = TaskStatus.Completed;
+            _task.Status = TaskStatus.Completed; // Update the task object
+            try
+            {
+                _taskRepository.UpdateTask(_task); // Save change to database
+                _refreshListCallback?.Invoke();    // Refresh the main UI
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to move task: {ex.Message}");
+            }
         }
 
         #endregion

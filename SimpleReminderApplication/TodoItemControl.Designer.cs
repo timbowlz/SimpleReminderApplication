@@ -77,7 +77,7 @@
             this.Controls.Add(this.lblDueDate);
             this.Controls.Add(this.lblDescription);
             this.Name = "TodoItemControl";
-            this.Size = new System.Drawing.Size(300, 58);
+            this.Size = new System.Drawing.Size(299, 58);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -38,6 +38,7 @@ namespace SimpleReminderApplication
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTaskForm));
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblDueDate = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -129,8 +130,10 @@ namespace SimpleReminderApplication
             this.Controls.Add(this.lblDueDate);
             this.Controls.Add(this.lblDescription);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddTaskForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Task Editor";
             this.ResumeLayout(false);
             this.PerformLayout();
 
