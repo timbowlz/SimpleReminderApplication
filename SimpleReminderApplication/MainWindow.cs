@@ -25,30 +25,13 @@ namespace SimpleReminderApplication
             this.ActiveControl = null;
         }
 
-        private void btnAddTask_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            string description = txtTaskDescription.Text;
-            DateTime dueDate = dateTimePicker1.Value;
-            TaskItem newTask = new TaskItem(description, dueDate);
+        }
 
-            // 3. Save the object to the database
-            try
-            {
-                _taskRepository.AddTask(newTask);
+        private void btnClearCompleted_Click(object sender, EventArgs e)
+        {
 
-                // 4. If saving was successful, create the UI control (View)
-                TodoItemControl newControl = new TodoItemControl(newTask);
-
-                // 5. Add the UI control to the screen
-                pnlToDo.Controls.Add(newControl);
-
-                // Clear input fields
-                txtTaskDescription.Text = "";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to add task: {ex.Message}");
-            }
         }
     }
     

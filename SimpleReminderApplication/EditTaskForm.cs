@@ -8,7 +8,7 @@ namespace SimpleReminderApplication
         private Label lblDescription;
         private Label lblDueDate;
         private TextBox txtDescription;
-        private Button btnEdit;
+        private Button btnDone;
         private Button btnCancel;
         private DateTimePicker dtpDueDate;
 
@@ -22,11 +22,7 @@ namespace SimpleReminderApplication
             dtpDueDate.Value = dueDate;
         }
 
-        public AddTaskForm()
-        {
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void btnDone_Click(object sender, EventArgs e)
         {
             TaskDescription = txtDescription.Text;
             TaskDueDate = dtpDueDate.Value;
@@ -46,7 +42,7 @@ namespace SimpleReminderApplication
             this.lblDueDate = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDone = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -92,20 +88,20 @@ namespace SimpleReminderApplication
             this.dtpDueDate.Size = new System.Drawing.Size(312, 29);
             this.dtpDueDate.TabIndex = 5;
             // 
-            // btnEdit
+            // btnDone
             // 
-            this.btnEdit.BackColor = System.Drawing.Color.White;
-            this.btnEdit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(83)))), ((int)(((byte)(78)))));
-            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(253, 108);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(0);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(100, 30);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Done";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnDone.BackColor = System.Drawing.Color.White;
+            this.btnDone.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.btnDone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(83)))), ((int)(((byte)(78)))));
+            this.btnDone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDone.Location = new System.Drawing.Point(253, 108);
+            this.btnDone.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(100, 30);
+            this.btnDone.TabIndex = 6;
+            this.btnDone.Text = "Done";
+            this.btnDone.UseVisualStyleBackColor = false;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // btnCancel
             // 
@@ -127,7 +123,7 @@ namespace SimpleReminderApplication
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(473, 147);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnDone);
             this.Controls.Add(this.dtpDueDate);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.lblDueDate);

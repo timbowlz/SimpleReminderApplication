@@ -38,7 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnClearCompleted = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -73,7 +73,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.tableLayoutPanel2.Controls.Add(this.pnlCompleted, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.pnlInProgress, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.pnlToDo, 0, 0);
@@ -86,14 +86,14 @@
             // 
             // pnlCompleted
             // 
-            this.pnlCompleted.Location = new System.Drawing.Point(681, 3);
+            this.pnlCompleted.Location = new System.Drawing.Point(680, 3);
             this.pnlCompleted.Name = "pnlCompleted";
             this.pnlCompleted.Size = new System.Drawing.Size(323, 410);
             this.pnlCompleted.TabIndex = 5;
             // 
             // pnlInProgress
             // 
-            this.pnlInProgress.Location = new System.Drawing.Point(342, 3);
+            this.pnlInProgress.Location = new System.Drawing.Point(341, 3);
             this.pnlInProgress.Name = "pnlInProgress";
             this.pnlInProgress.Size = new System.Drawing.Size(323, 410);
             this.pnlInProgress.TabIndex = 4;
@@ -103,7 +103,7 @@
             this.pnlToDo.AutoScroll = true;
             this.pnlToDo.Location = new System.Drawing.Point(3, 3);
             this.pnlToDo.Name = "pnlToDo";
-            this.pnlToDo.Size = new System.Drawing.Size(323, 410);
+            this.pnlToDo.Size = new System.Drawing.Size(322, 410);
             this.pnlToDo.TabIndex = 3;
             // 
             // tableLayoutPanel3
@@ -164,7 +164,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.Controls.Add(this.button2, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnClearCompleted, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnAdd, 0, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(16, 512);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -174,20 +174,21 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(1020, 42);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
-            // button2
+            // btnClearCompleted
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(83)))), ((int)(((byte)(78)))));
-            this.button2.Location = new System.Drawing.Point(680, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(339, 41);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Clear All Completed";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnClearCompleted.BackColor = System.Drawing.Color.White;
+            this.btnClearCompleted.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.btnClearCompleted.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(83)))), ((int)(((byte)(78)))));
+            this.btnClearCompleted.Location = new System.Drawing.Point(680, 0);
+            this.btnClearCompleted.Margin = new System.Windows.Forms.Padding(0);
+            this.btnClearCompleted.Name = "btnClearCompleted";
+            this.btnClearCompleted.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnClearCompleted.Size = new System.Drawing.Size(339, 41);
+            this.btnClearCompleted.TabIndex = 2;
+            this.btnClearCompleted.Text = "Clear All Completed";
+            this.btnClearCompleted.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClearCompleted.UseVisualStyleBackColor = false;
+            this.btnClearCompleted.Click += new System.EventHandler(this.btnClearCompleted_Click);
             // 
             // btnAdd
             // 
@@ -239,7 +240,7 @@
             this.lblAppTitle.TabIndex = 1;
             this.lblAppTitle.Text = "A Simple Reminder Application";
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -250,7 +251,7 @@
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "Form1";
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -276,7 +277,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnClearCompleted;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         internal System.Windows.Forms.FlowLayoutPanel pnlCompleted;
         internal System.Windows.Forms.FlowLayoutPanel pnlInProgress;
