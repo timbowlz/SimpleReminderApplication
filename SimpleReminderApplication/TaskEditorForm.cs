@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace SimpleReminderApplication
 {
-    public partial class AddTaskForm : Form
+    public partial class TaskEditorForm : Form
     {
         private Label lblDescription;
         private Label lblDueDate;
@@ -15,7 +15,7 @@ namespace SimpleReminderApplication
         public string TaskDescription { get; private set; }
         public DateTime TaskDueDate { get; private set; }
 
-        public AddTaskForm(string description, DateTime dueDate)
+        public TaskEditorForm(string description, DateTime dueDate)
         {
             InitializeComponent();
             txtDescription.Text = description;
@@ -24,6 +24,11 @@ namespace SimpleReminderApplication
 
         private void btnDone_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtDescription.Text))
+            {
+                MessageBox.Show("Task description cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             TaskDescription = txtDescription.Text;
             TaskDueDate = dtpDueDate.Value;
             this.DialogResult = DialogResult.OK;
@@ -38,7 +43,7 @@ namespace SimpleReminderApplication
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTaskForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskEditorForm));
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblDueDate = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();

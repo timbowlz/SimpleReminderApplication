@@ -8,10 +8,10 @@ namespace SimpleReminderApplication
 {
     internal class TaskItem
     {
-        public Guid Id { get; set; }              // Unique ID
-        public string Description { get; set; }   // Task description
-        public DateTime DueDate { get; set; }     // Due date/time
-        public TaskStatus Status { get; set; }    // ToDo, InProgress, Completed
+        public Guid Id { get; set; }
+        public string Description { get; set; }
+        public DateTime DueDate { get; set; }
+        public TaskStatus Status { get; set; }
 
         public TaskItem(string description, DateTime dueDate)
         {
@@ -19,11 +19,6 @@ namespace SimpleReminderApplication
             Description = description;
             DueDate = dueDate;
             Status = TaskStatus.ToDo;
-        }
-
-        public override string ToString()
-        {
-            return $"{Description} (Due {DueDate:yyyy-MM-dd}) - {Status}";
         }
     }
 

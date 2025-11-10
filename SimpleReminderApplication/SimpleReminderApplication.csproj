@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EditTaskForm.cs">
+    <Compile Include="TaskEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainWindow.cs">
@@ -65,8 +66,8 @@
     <Compile Include="TodoItemControl.Designer.cs">
       <DependentUpon>TodoItemControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EditTaskForm.resx">
-      <DependentUpon>EditTaskForm.cs</DependentUpon>
+    <EmbeddedResource Include="TaskEditorForm.resx">
+      <DependentUpon>TaskEditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
